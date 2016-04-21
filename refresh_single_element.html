@@ -1,0 +1,24 @@
+<html>
+<body>
+
+<p>Click the button, and the &lt;p&gt; element will keep refreshing every one second.</p>
+<button onclick="myFunction()">Click Me</button>
+<p id="demo"></p>
+
+<script>
+    function myFunction() {
+        var x = "", i = 0;
+
+        function timerFunc() {
+            x = "The number is " + i;
+            i++;
+            document.getElementById("demo").innerHTML = x;
+            setTimeout(timerFunc, 1000);
+        }
+
+        timerFunc();
+    }
+</script>
+
+</body>
+</html>
