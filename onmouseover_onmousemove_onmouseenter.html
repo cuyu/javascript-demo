@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    div.MyBlock {
+      position: relative;
+      width: 500px;
+      height: 100px;
+      background-color: #222F50;
+    }
+    p.MyText {
+      border-style: dashed;
+      border-width: thin;
+      text-align: center;
+      color: #FAA110;
+      font-size: 17px;
+    }
+    p.ExplainText {
+      font-style: italic;
+      position: relative;
+    }
+</style>
+<body>
+
+<p>Move mouse over the block, and text will show up.</p>
+
+<div id="mouseOverBlock" onmouseover="mouseOverFunction()" class="MyBlock">
+  <p id="mouseOverText" class="MyText"></p>
+</div>
+<p class="ExplainText">
+  The onmouseover event occurs when the mouse pointer enters the element, and its child elements (&lt;div&gt; and &lt;p&gt; here).
+</p>
+
+<div id="mouseMoveBlock" onmousemove="mouseMoveFunction()" class="MyBlock">
+  <p id="mouseMoveText" class="MyText"></p>
+</div>
+<p class="ExplainText">
+  The onmousemove event occurs every time the mouse pointer is moved in the element(&lt;div&gt; here).
+</p>
+
+<div id="mouseEnterBlock" onmouseenter="mouseEnterFunction()" class="MyBlock">
+  <p id="mouseEnterText" class="MyText"></p>
+</div>
+<p class="ExplainText">
+  The mouseenter event only occurs when the mouse pointer enters the element(&lt;div&gt; here).
+</p>
+
+<script>
+    var mouse_over_count = 0, mouse_move_count = 0, mouse_enter_count = 0;
+
+    function mouseOverFunction() {
+        var elem = document.getElementById("mouseOverText");
+        mouse_over_count++;
+        elem.innerHTML = "`onmouseover` is called:" + mouse_over_count + 'times';
+    }
+
+    function mouseMoveFunction() {
+        var elem = document.getElementById("mouseMoveText");
+        mouse_move_count++;
+        elem.innerHTML = "`onmousemove` is called:" + mouse_move_count + 'times';
+    }
+
+    function mouseEnterFunction() {
+        var elem = document.getElementById("mouseEnterText");
+        mouse_enter_count++;
+        elem.innerHTML = "`onmouseenter` is called:" + mouse_enter_count + 'times';
+    }
+</script>
+
+</body>
+</html>
