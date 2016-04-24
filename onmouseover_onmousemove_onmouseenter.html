@@ -6,21 +6,23 @@
 </head>
 <style>
     div.MyBlock {
-      position: relative;
-      width: 500px;
-      height: 100px;
-      background-color: #222F50;
+        position: relative;
+        width: 500px;
+        height: 100px;
+        background-color: #222F50;
     }
+
     p.MyText {
-      border-style: dashed;
-      border-width: thin;
-      text-align: center;
-      color: #FAA110;
-      font-size: 17px;
+        border-style: dashed;
+        border-width: thin;
+        text-align: center;
+        color: #FAA110;
+        font-size: 17px;
     }
+
     p.ExplainText {
-      font-style: italic;
-      position: relative;
+        font-style: italic;
+        position: relative;
     }
 </style>
 <body>
@@ -28,24 +30,25 @@
 <p>Move mouse over the block, and text will show up.</p>
 
 <div id="mouseOverBlock" onmouseover="mouseOverFunction()" class="MyBlock">
-  <p id="mouseOverText" class="MyText"></p>
+    <p id="mouseOverText" class="MyText"></p>
 </div>
 <p class="ExplainText">
-  The onmouseover event occurs when the mouse pointer enters the element, and its child elements (&lt;div&gt; and &lt;p&gt; here).
+    The onmouseover event occurs when the mouse pointer enters the element, and its child elements (&lt;div&gt; and &lt;p&gt;
+    here).
 </p>
 
 <div id="mouseMoveBlock" onmousemove="mouseMoveFunction()" class="MyBlock">
-  <p id="mouseMoveText" class="MyText"></p>
+    <p id="mouseMoveText" class="MyText"></p>
 </div>
 <p class="ExplainText">
-  The onmousemove event occurs every time the mouse pointer is moved in the element(&lt;div&gt; here).
+    The onmousemove event occurs every time the mouse pointer is moved in the element(&lt;div&gt; here).
 </p>
 
 <div id="mouseEnterBlock" onmouseenter="mouseEnterFunction()" class="MyBlock">
-  <p id="mouseEnterText" class="MyText"></p>
+    <p id="mouseEnterText" class="MyText"></p>
 </div>
 <p class="ExplainText">
-  The mouseenter event only occurs when the mouse pointer enters the element(&lt;div&gt; here).
+    The mouseenter event only occurs when the mouse pointer enters the element(&lt;div&gt; here).
 </p>
 
 <script>

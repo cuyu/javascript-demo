@@ -6,27 +6,41 @@
 </head>
 <style>
     div.MyBlock {
-      position: relative;
-      width: 100px;
-      height: 100px;
-      background-color: #222F50;
+        position: relative;
+        width: 100px;
+        height: 100px;
+        background-color: #222F50;
+    }
+    div.SeparateLine {
+        position: relative;
+        width: 100%;
+        height: 3px;
+        background-color: #AA1133
     }
 </style>
 <body>
 
-<p>Click the button, and a block will be inserted.</p>
+<p>Click the corresponding button, and a block will be inserted.</p>
 
-<div class="MyBlock"></div>
-
+<button onclick="insertElement()">Insert Before Line</button>
+<button onclick="appendElement()">Append after Line</button>
 <br>
-<button id="myButton" onclick="insertElement()">Click Me</button>
+<div id="sepLine" class="SeparateLine"></div>
+
+
 
 <script>
     function insertElement() {
         var elem = document.createElement("div");
         elem.className = "MyBlock";
-        var btn = document.getElementById("myButton");
-        document.body.insertBefore(elem, btn);
+        var line = document.getElementById("sepLine");
+        document.body.insertBefore(elem, line);
+    }
+
+    function appendElement() {
+        var elem = document.createElement("div");
+        elem.className = "MyBlock";
+        document.body.appendChild(elem);
     }
 </script>
 

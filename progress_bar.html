@@ -14,7 +14,7 @@
 
     #myBar {
         position: absolute;
-        width: 0%;
+        width: 0;
         height: 100%;
         background-color: #4CAF50;
     }
@@ -52,7 +52,7 @@
             } else {
                 width++;
                 elem.style.width = width + '%';
-                document.getElementById("label").innerHTML = width * 1 + '%';
+                document.getElementById("label").innerHTML = width + '%';
             }
         }
     }
