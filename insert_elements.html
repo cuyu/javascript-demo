@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    div.MyBlock {
+      position: relative;
+      width: 100px;
+      height: 100px;
+      background-color: #222F50;
+    }
+</style>
+<body>
+
+<p>Click the button, and a block will be inserted.</p>
+
+<div class="MyBlock"></div>
+
+<br>
+<button id="myButton" onclick="insertElement()">Click Me</button>
+
+<script>
+    function insertElement() {
+        var elem = document.createElement("div");
+        elem.className = "MyBlock";
+        var btn = document.getElementById("myButton");
+        document.body.insertBefore(elem, btn);
+    }
+</script>
+
+</body>
+</html>
