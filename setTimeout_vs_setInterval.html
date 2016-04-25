@@ -6,17 +6,41 @@
 </head>
 <body>
 
-<script>
-    test_setTimeout();
+<h4>A demo to demenstrate the difference between setTimeout() and setInterval().</h4>
+<p>
+  Note that the actual interval of using setTimeout() is the setting interval plus code execute time; while the interval of using setInterval() is always the setting value. <br>
+  So it could be dangerous when code execute time is longer than the setting interval when using setInterval. <br>
+</p>
+<button onclick="testSetTimeout()">Use setTimeout()</button>
+<p id="setTimeoutText"></p>
+<button onclick="testSetInterval()">Use setInterval()</button>
+<p id="setIntervalText"></p>
 
-    function test_setTimeout() {
-        displayTime();
-        setTimeout(test_setTimeout, 1000);
+<script>
+    function testSetTimeout() {
+        var elem = document.getElementById("setTimeoutText");
+        displayTime(elem);
+        setTimeout(testSetTimeout, 1000);
     }
 
-    function displayTime() {
-        var d = new Date()
-        console.log(d.getTime())
+    function testSetInterval() {
+        var elem = document.getElementById("setIntervalText");
+        setInterval(function () {displayTime(elem);}, 1000)
+    }
+
+    function displayTime(elem) {
+        var d = new Date();
+        sleep(200);
+        elem.innerHTML += d.getTime() + "\n";
+    }
+
+    function sleep(milliseconds) {
+        var start = new Date().getTime();
+        for (var i = 0; i < 1e7; i++) {
+            if ((new Date().getTime() - start) > milliseconds){
+                break;
+            }
+        }
     }
 </script>
 
