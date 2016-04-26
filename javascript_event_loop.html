@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h4>Open the console to see the result.</h4>
+<p>
+    The `setTimeout` function actually generated a new event, appending at the end of current message queue. Although
+    the function `g()` is set to run with 0s delay, it is still called after all operations in `f()`. That's because in
+    message queue, `f()` is before `g()`. And javascript is single-threaded here! All the async operations/calls are actually
+    append new messages to the message queue.
+</p>
+
+<script>
+    function f() {
+        console.log("foo");
+        setTimeout(g, 0);
+        console.log("baz");
+        sleep(200);
+        h();
+    }
+
+    function g() {
+        console.log("bar");
+    }
+
+    function h() {
+        console.log("blix");
+    }
+
+    f();
+
+    function sleep(milliseconds) {
+        /**
+         * This function is used to simulate the sleep() like python.
+         */
+        var start = new Date().getTime();
+        for (var i = 0; i < 1e7; i++) {
+            if ((new Date().getTime() - start) > milliseconds){
+                break;
+            }
+        }
+    }
+</script>
+
+</body>
+</html>
