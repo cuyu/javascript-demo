@@ -2,25 +2,28 @@
  * Created by cuyu on 5/5/17.
  */
 
-// Promise
+// ---------------------Promise---------------------
 function promisePrint(str) {
-    return function () {
-        console.log(str);
-        return new Promise(function (resolve, reject) {
-            //当异步代码执行成功时，我们才会调用resolve(...), 当异步代码失败时就会调用reject(...)
-            //在本例中，我们使用setTimeout(...)来模拟异步代码，实际编码时可能是XHR请求或是HTML5的一些API方法.
-            setTimeout(function () {
-                resolve();
-            }, 1000);
-        });
-    }
+    console.log(str);
+    return new Promise(function (resolve, reject) {
+        //当异步代码执行成功时，我们才会调用resolve(...), 当异步代码失败时就会调用reject(...)
+        //在本例中，我们使用setTimeout(...)来模拟异步代码，实际编码时可能是XHR请求或是HTML5的一些API方法.
+        setTimeout(function () {
+            resolve();
+        }, 1000);
+    });
 }
 
-promisePrint('111')().then(promisePrint('222')).then(promisePrint('333')).then(promisePrint('444'));
+promisePrint('111').then(
+    () => promisePrint('222')
+).then(
+    () => promisePrint('333')
+).then(
+    () => promisePrint('444')
+);
 
 
-// ------------------------------------------
-
+// ---------------------Generator---------------------
 function co(genFun) {
     // 通过调用生成器函数得到一个生成器
     var gen = genFun();
@@ -95,6 +98,7 @@ function generatorCall(genFunc) {
 generatorCall(gen);
 
 
+// ---------------------async/await---------------------
 function timeoutPrint(str) {
     console.log(str);
     return new Promise((resolve) => {
@@ -118,3 +122,25 @@ async function asyncCall() {
 }
 
 asyncCall().then();
+
+
+// ---------------------Observable---------------------
+const Rx = require('rx');
+
+function observablePrint(str) {
+    return Rx.Observable.create(function (observer) {
+        console.log(str);
+        setTimeout(function () {
+            observer.onNext();
+            observer.onCompleted();
+            observer.onError();
+        }, 1000);
+        return function () {
+        }
+    });
+}
+
+observablePrint('ob1').flatMap(observablePrint('ob2')).flatMap(observablePrint('ob3')).flatMap(observablePrint('ob4')).subscribe();
+
+// subscription.dispose();
+
