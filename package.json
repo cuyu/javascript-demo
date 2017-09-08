@@ -11,6 +11,8 @@
     "eslint-plugin-react": "^7.0.0"
   },
   "dependencies": {
+    "cross-spawn": "^5.1.0",
+    "immutable": "^3.8.1",
     "rx": "^4.1.0"
   },
   "scripts": {}
