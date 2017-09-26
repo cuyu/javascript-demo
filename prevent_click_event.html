@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    #block {
+        width: 100px;
+        height: 100px;
+        background-color: #4CAF50;
+    }
+</style>
+<body>
+<div id="wrapper">
+    <div id="block">
+    </div>
+</div>
+<script>
+    var block = document.getElementById("block");
+    var wrapper = document.getElementById("wrapper");
+
+    wrapper.addEventListener("click", function (e) {
+        console.log('click1');
+        block.style.backgroundColor = block.style.backgroundColor === "red" ? "#4CAF50" : "red";
+    });
+
+    block.addEventListener("click", function (e) {
+        console.log('click2');
+        e.preventDefault();  // this prevent the default handler, here the default handler does nothing at all
+        e.stopPropagation();  // this prevent the event goes to listener functions of outer DOM elements
+        //return false;  // return false does nothing for plain JS, see https://stackoverflow.com/questions/1357118/event-preventdefault-vs-return-false
+    });
+</script>
+</body>
+</html>
