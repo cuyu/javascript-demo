@@ -5,27 +5,31 @@
     <title>Title</title>
 </head>
 <style>
-    #block {
+    #inner {
         width: 100px;
         height: 100px;
         background-color: #4CAF50;
     }
+
+    /*#outer {*/
+        /*pointer-events: none;  !* The element is never the target of mouse events *!*/
+    /*}*/
 </style>
 <body>
-<div id="wrapper">
-    <div id="block">
+<div id="outer">
+    <div id="inner">
     </div>
 </div>
 <script>
-    var block = document.getElementById("block");
-    var wrapper = document.getElementById("wrapper");
+    var inner = document.getElementById("inner");
+    var outer = document.getElementById("outer");
 
-    wrapper.addEventListener("click", function (e) {
+    outer.addEventListener("click", function (e) {
         console.log('click1');
-        block.style.backgroundColor = block.style.backgroundColor === "red" ? "#4CAF50" : "red";
+        inner.style.backgroundColor = inner.style.backgroundColor === "red" ? "#4CAF50" : "red";
     });
 
-    block.addEventListener("click", function (e) {
+    inner.addEventListener("click", function (e) {
         console.log('click2');
         e.preventDefault();  // this prevent the default handler, here the default handler does nothing at all
         e.stopPropagation();  // this prevent the event goes to listener functions of outer DOM elements
