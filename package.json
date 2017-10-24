@@ -6,15 +6,19 @@
     "babel-eslint": "^7.2.3",
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "^14.1.0",
-    "eslint-plugin-import": "^2.2.0",
-    "eslint-plugin-jsx-a11y": "^5.0.1",
-    "eslint-plugin-react": "^7.0.0"
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^5.1.1",
+    "eslint-plugin-react": "^7.4.0"
   },
   "dependencies": {
+    "babel": "^6.23.0",
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-register": "^6.26.0",
     "cross-spawn": "^5.1.0",
-    "immutable": "^3.8.1",
+    "immutable": "^3.8.2",
     "rx": "^4.1.0",
-    "sequelize": "^4.15.0",
+    "sequelize": "^4.17.1",
     "sqlite3": "^3.1.13"
   },
   "scripts": {}
