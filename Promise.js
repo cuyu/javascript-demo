@@ -168,3 +168,35 @@ var p12 = p11.then(function (v) {
 var p13 = p12.then(function (v) {
     console.log(v);	// 42
 });
+
+// ======================
+var p14 = Promise.resolve(21);
+
+p14.then(function (v) {
+    console.log(v);	// 21
+
+    // create a promise and return it
+    return new Promise(function (resolve, reject) {
+        // fulfill with value `42`
+        resolve(v * 2);
+    });
+}).then(function (v) {
+    console.log(v);	// 42
+});
+
+// ======================
+var p15 = Promise.resolve(15);
+
+p15.then(
+    // assumed fulfillment handler, if omitted or
+    // any other non-function value passed
+    // function(v) {
+    //     return v;
+    // }
+    null,
+    function rejected(err) {
+        // never gets here
+    }
+).then(function (v) {
+    console.log(v);
+});
