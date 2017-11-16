@@ -71,7 +71,7 @@ for (i of myIt) {
 console.log('============================================');
 function *foo3() {
     var a = yield 1;
-    console.log(a); // undefined
+    console.log(a); // 5
     return 2;
 }
 
@@ -79,12 +79,13 @@ function *bar3() {
     var b = yield *foo3();
     console.log(b); // 2
     var c = yield 3;
-    console.log(c); // 4
+    console.log(c); // 6
+    return 4;
 }
 
 var it3 = bar3();
 
-it3.next();    // {value: 1, done: false}
-it3.next();    // {value: 3, done: false}
-it3.next(4);    // {value: undefined, done: true}
+it3.next();     // {value: 1, done: false}
+it3.next(5);    // {value: 3, done: false}
+it3.next(6);    // {value: 4, done: true}
 
